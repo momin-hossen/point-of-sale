@@ -16,6 +16,10 @@
 
 
         <h1 class="text-center fs-1">POINT OF SALE</h1>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ route('login') }}">Log In</a>
+            <a class="btn btn-info" href="{{ route('register') }}">Register</a>
+        </div>
 
 
 
