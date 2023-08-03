@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+// FrontendController
+Route::get('/', [FrontendController::class, 'welcome'])->name('welcome');
+
+// ProfileController
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
@@ -29,3 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+// UnitController
+Route::resource('units', UnitController::class);
