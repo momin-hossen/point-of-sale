@@ -142,6 +142,13 @@
                 <div data-i18n="Analytics">Unit</div>
               </a>
             </li>
+            {{-- Category --}}
+            <li class="menu-item">
+              <a href="{{ route('categories.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Category</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
@@ -36,3 +37,6 @@ require __DIR__.'/auth.php';
 
 // UnitController
 Route::resource('units', UnitController::class);
+
+// CategoryController
+Route::resource('categories', CategoryController::class);
