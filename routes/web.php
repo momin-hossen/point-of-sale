@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
@@ -44,3 +45,6 @@ Route::resource('categories', CategoryController::class);
 
 // expense_categories
 Route::resource('expense_categories', ExpenseCategoryController::class);
+
+// expenses
+Route::resource('expenses', ExpenseController::class);

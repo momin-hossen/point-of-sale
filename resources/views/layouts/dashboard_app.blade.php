@@ -149,6 +149,19 @@
                 <div data-i18n="Analytics">Category</div>
               </a>
             </li>
+            {{-- Expense Category --}}
+            <li class="menu-item">
+              <a href="{{ route('expense_categories.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Expense Category</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('expenses.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Expense</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
