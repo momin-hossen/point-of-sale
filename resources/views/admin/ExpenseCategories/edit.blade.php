@@ -3,7 +3,7 @@
 @section('dashboard_content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-9 m-auto py-5">
+        <div class="col-12 m-auto py-5">
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Expense Category Create</h5>

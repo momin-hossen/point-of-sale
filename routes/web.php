@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
@@ -48,3 +49,6 @@ Route::resource('expense_categories', ExpenseCategoryController::class);
 
 // expenses
 Route::resource('expenses', ExpenseController::class);
+
+// ProductController
+Route::resource('products', ProductController::class);
