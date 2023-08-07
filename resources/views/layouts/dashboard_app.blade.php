@@ -44,6 +44,8 @@
     <link rel="stylesheet" href="{{ asset('dashboard_asset') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    {{-- datatable --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
     <!-- Helpers -->
     <script src="{{ asset('dashboard_asset') }}/assets/vendor/js/helpers.js"></script>
@@ -338,15 +340,6 @@
   </div>
   <!-- / Layout wrapper -->
 
-  <div class="buy-now">
-    <a
-      href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-      target="_blank"
-      class="btn btn-danger btn-buy-now"
-      >Upgrade to Pro</a
-    >
-  </div>
-
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
   <script src="{{ asset('dashboard_asset') }}/assets/vendor/libs/jquery/jquery.js"></script>
@@ -368,5 +361,11 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  {{-- datatable --}}
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+  <script>
+    let table = new DataTable('#myTable');
+  </script>
 </body>
 </html>          

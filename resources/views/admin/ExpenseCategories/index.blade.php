@@ -10,7 +10,7 @@
             <div class="card">
                 <h5 class="card-header">Expense Category List</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
+                  <table class="table" id="myTable">
                     <thead>
                       <tr>
                         <th>ID</th>
