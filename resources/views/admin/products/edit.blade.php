@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <div class="col-12 m-auto py-5">
+        <div class="col-12 m-auto">
           <a class="btn btn-primary btn-sm m-3" href="{{ url('products') }}">Product View</a>
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">

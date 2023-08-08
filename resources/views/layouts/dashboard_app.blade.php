@@ -132,7 +132,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item">
-              <a href="{{ route('home') }}" class="menu-link">
+              <a href="{{ route('home') }}" class="menu-link active">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -291,43 +291,8 @@
 
           <!-- / Navbar -->
 
-
           @yield('dashboard_content')
           
-          
-          <!-- Footer -->
-          <footer class="content-footer footer bg-footer-theme">
-            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-              <div class="mb-2 mb-md-0">
-                ©
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                , made with ❤️ by
-                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-              </div>
-              <div>
-                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                <a
-                  href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                  target="_blank"
-                  class="footer-link me-4"
-                  >Documentation</a
-                >
-
-                <a
-                  href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                  target="_blank"
-                  class="footer-link me-4"
-                  >Support</a
-                >
-              </div>
-            </div>
-          </footer>
-          <!-- / Footer -->
-
           <div class="content-backdrop fade"></div>
         </div>
         <!-- Content wrapper -->
@@ -358,14 +323,5 @@
 
   <!-- Page JS -->
   <script src="{{ asset('dashboard_asset') }}/assets/js/dashboards-analytics.js"></script>
-
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-  {{-- datatable --}}
-  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-  <script>
-    let table = new DataTable('#myTable');
-  </script>
 </body>
 </html>          

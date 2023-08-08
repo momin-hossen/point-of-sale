@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
       
-        <div class="col-12 m-auto py-5 mb-5">
+        <div class="col-12 m-auto mb-5">
             <a class="btn btn-primary btn-sm m-3" href="{{ url('products/create') }}">Product Create</a>
             <!-- Basic Bootstrap Table -->
             <div class="card">
