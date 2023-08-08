@@ -13,10 +13,17 @@
             </div>
         @endif
         <div class="col-12 m-auto">
-          <a class="btn btn-primary btn-sm m-3" href="{{ url('products') }}">Product View</a>
+          <div class="row justify-content-between">
+            <div class="col mt-3">
+              <h3>Product Edit</h3>
+            </div>
+            <div class="col text-end align-item-center">
+              <a class="btn btn-primary btn-sm m-3" href="{{ url('products') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Product View</a>
+            </div>
+          </div>
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Product Create</h5>
+                <h5 class="mb-0">Product Edit</h5>
               </div>
               <div class="card-body">
                 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
@@ -60,7 +67,7 @@
                     <input type="file" class="form-control" name="image"/>
                     <img src="{{ asset('product/'.$product_info->image) }}" alt="{{ $product->name }}" width="100">
                   </div>
-                  <button type="submit" class="btn btn-primary">Update Product</button>
+                  <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bxs-save' ></i>Update Product</button>
                 </form>
               </div>
             </div>

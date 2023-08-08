@@ -4,9 +4,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 m-auto">
+              <div class="row justify-content-between">
+                <div class="col mt-3">
+                  <h3>Category Edit</h3>
+                </div>
+                <div class="col text-end align-item-center">
+                  <a class="btn btn-primary btn-sm m-3" href="{{ url('categories') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Category View</a>
+                </div>
+              </div>
                 <div class="card mb-4">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Category edit</h5>
+                    <h5 class="mb-0">Category Edit</h5>
                   </div>
                   <div class="card-body">
                     <form action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
@@ -38,7 +46,7 @@
                         <input type="file" class="form-control" name="image"/>
                         <img src="{{ asset('category/'.$category->image) }}" alt="{{ $category->name }}" width="100">
                       </div>
-                      <button type="submit" class="btn btn-primary">Update</button>
+                      <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bxs-save' ></i> Category</button>
                     </form>
                   </div>
                 </div>

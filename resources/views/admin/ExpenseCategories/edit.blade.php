@@ -4,9 +4,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 m-auto">
+          <div class="row justify-content-between">
+            <div class="col mt-3">
+              <h3>Expense Category Edit</h3>
+            </div>
+            <div class="col text-end align-item-center">
+              <a class="btn btn-primary btn-sm m-3" href="{{ url('expense_categories') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Expense Category View</a>
+            </div>
+          </div>
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Expense Category Create</h5>
+                <h5 class="mb-0">Expense Category Edit</h5>
               </div>
               <div class="card-body">
                 <form action="{{ route('expense_categories.update', $expenseCategory->id) }}" method="POST">
@@ -33,7 +41,7 @@
                       name="description"
                     >{{ $expenseCategory->description }}</textarea>
                   </div>
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bxs-save' ></i>Update</button>
                 </form>
               </div>
             </div>

@@ -130,45 +130,46 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="{{ route('home') }}" class="menu-link active">
+            {{-- <!-- Dashboard --> eta hocche. --}}
+            <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+              <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
             {{-- Unit --}}
-            <li class="menu-item">
+            <li class="menu-item {{ Request::is('units*') ? 'active' : '' }}">
               <a href="{{ route('units.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class='menu-icon tf-icons bx bx-unite'></i>
                 <div data-i18n="Analytics">Unit</div>
               </a>
             </li>
+            {{-- Eyvabe try korinai, hoynaki dekhi . Eta onno vabe kora jay, only one time --}}
             {{-- Category --}}
-            <li class="menu-item">
+            <li class="menu-item {{ Request::is('categories*') ? 'active' : '' }}">
               <a href="{{ route('categories.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class='menu-icon tf-icons bx bx-category'></i>
                 <div data-i18n="Analytics">Category</div>
               </a>
             </li>
             {{-- Expense Category --}}
-            <li class="menu-item">
+            <li class="menu-item {{ Request::is('expense_categories*') ? 'active' : '' }}">
               <a href="{{ route('expense_categories.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-category-alt"></i>
                 <div data-i18n="Analytics">Expense Category</div>
               </a>
             </li>
             {{-- Expense --}}
-            <li class="menu-item">
+            <li class="menu-item {{ Request::is('expenses*') ? 'active' : '' }}">
               <a href="{{ route('expenses.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class='menu-icon tf-icons bx bxs-badge-dollar'></i>
                 <div data-i18n="Analytics">Expense</div>
               </a>
             </li>
             {{-- Product --}}
-            <li class="menu-item">
+            <li class="menu-item  {{ Request::is('products*') ? 'active' : '' }}">
               <a href="{{ route('products.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Product</div>
               </a>
             </li>

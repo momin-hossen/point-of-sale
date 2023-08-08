@@ -5,10 +5,31 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 m-auto mb-5">
-            <a class="btn btn-primary btn-sm m-3" href="{{ route('expenses.create') }}">Expense Create</a>
+          <div class="row justify-content-between">
+            <div class="col mt-3">
+              <h3>Expense List</h3>
+            </div>
+            <div class="col text-end align-item-center">
+              <a class="btn btn-primary btn-sm m-3" href="{{ route('expenses.create') }}"><i class='menu-icon tf-icons bx bx-plus-circle'></i> Expense Create</a>
+            </div>
+          </div>
             <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header">Unit's List</h5>
+              <div class="card-body">
+                <div class="row justify-content-between">
+                  <div class="col-sm-6">
+                      <h5>Expense List</h5>
+                  </div>
+                  <div class="col-md-4 text-end">
+                      <form action="" method="get">
+                          <div class="input-group">
+                              <input type="text" name="search" class="form-control" placeholder="Search..." aria-describedby="button-addon2" value="{{ request('search') }}">
+                              <button class="btn btn-primary" type="submit" id="button-addon2"><i class='bx bx-search-alt-2'></i></button>
+                            </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
                 <div class="table-responsive text-nowrap">
                   <table class="table" id="myTable">
                     <thead>

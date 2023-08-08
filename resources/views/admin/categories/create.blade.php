@@ -4,7 +4,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 m-auto">
-              <a class="btn btn-primary btn-sm m-3" href="{{ url('categories') }}">Category View</a>
+              <div class="row justify-content-between">
+                <div class="col mt-3">
+                  <h3>Create Category</h3>
+                </div>
+                <div class="col text-end align-item-center">
+                  <a class="btn btn-primary btn-sm m-3" href="{{ url('categories') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Category View</a>
+                </div>
+              </div>
                 <div class="card mb-4">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Create Category</h5>
@@ -37,7 +44,7 @@
                         <label class="form-label">Image:</label>
                         <input type="file" class="form-control" name="image"/>
                       </div>
-                      <button type="submit" class="btn btn-primary">Create Category</button>
+                      <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i>Create Category</button>
                     </form>
                   </div>
                 </div>
