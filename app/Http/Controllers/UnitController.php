@@ -12,7 +12,12 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::all();
+        
+        $units = Unit::when(request('search'), function($q) {
+            $q->where('name', 'like', '%'.request('search').'%');
+        })
+        ->latest()
+        ->get();
         return view('admin.units.index', compact('units'));
     }
 

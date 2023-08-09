@@ -12,7 +12,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::when(request('search'), function($q) {
+            $q->where('name', 'like', '%'.request('search').'%');
+        })
+        ->latest()
+        ->get();
         return view('admin.categories.index', compact('categories'));
     }
 

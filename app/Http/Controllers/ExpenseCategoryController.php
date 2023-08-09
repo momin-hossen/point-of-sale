@@ -12,7 +12,11 @@ class ExpenseCategoryController extends Controller
      */
     public function index()
     {
-        $expense_categories = ExpenseCategory::all();
+        $expense_categories = ExpenseCategory::when(request('search'), function($q) {
+            $q->where('name', 'like', '%'.request('search').'%');
+        })
+        ->latest()
+        ->get();
         return view('admin.ExpenseCategories.index', compact('expense_categories'));
     }
 

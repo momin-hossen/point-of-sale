@@ -14,7 +14,11 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.products.index',[
-            'products' => Product::all(), 
+            'products' => Product::when(request('search'), function($q) {
+                $q->where('name', 'like', '%'.request('search').'%');
+            })
+            ->latest()
+            ->get()
         ]);
     }
 
