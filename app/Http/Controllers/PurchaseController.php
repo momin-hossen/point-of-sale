@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,13 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.purchases.index',[
+            'purchases' => Purchase::when(request('search'), function($q) {
+                $q->where('name', 'like', '%'.request('search').'%');
+            })
+            ->latest()
+            ->get()
+        ]);
     }
 
     /**
@@ -20,7 +27,10 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.purchases.create', [
+            'active_products' => Product::all(),
+            'purchases' => Purchase::with('onetoonerelationwithproducttable')->get(),
+        ]);
     }
 
     /**
@@ -28,7 +38,10 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Purchase::create($request->all());
+    
+        return redirect()->route('purchases.index')
+                         ->with('success', 'Purchase created successfully');
     }
 
     /**
@@ -36,7 +49,7 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        //
+        return view('admin.purchases.show', compact('purchase'));
     }
 
     /**
@@ -44,7 +57,10 @@ class PurchaseController extends Controller
      */
     public function edit(Purchase $purchase)
     {
-        //
+        $active_products = Product::all();
+        $purchase_info = $purchase;
+
+        return view('admin.purchases.edit', compact('purchase', 'active_products', 'purchase_info'));
     }
 
     /**
@@ -52,7 +68,8 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, Purchase $purchase)
     {
-        //
+        $purchase->update($request->all());
+        return redirect()->route('purchases.index')->with('success', 'Purchases updated successfully.');
     }
 
     /**
@@ -60,6 +77,7 @@ class PurchaseController extends Controller
      */
     public function destroy(Purchase $purchase)
     {
-        //
+        $purchase->delete();
+        return redirect()->route('purchases.index')->with('success', 'purchase deleted successfully.');
     }
 }

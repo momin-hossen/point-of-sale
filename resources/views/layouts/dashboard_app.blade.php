@@ -173,6 +173,13 @@
                 <div data-i18n="Analytics">Product</div>
               </a>
             </li>
+            {{-- Purchase --}}
+            <li class="menu-item  {{ Request::is('purchases*') ? 'active' : '' }}">
+              <a href="{{ route('purchases.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-package"></i>
+                <div data-i18n="Analytics">Purchase</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -324,5 +331,6 @@
 
   <!-- Page JS -->
   <script src="{{ asset('dashboard_asset') }}/assets/js/dashboards-analytics.js"></script>
+  @stack('js')
 </body>
 </html>          

@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->integer('product_id');
+            $table->integer('quantity');
+            $table->integer('discount_type')->default(1);
+            $table->float('sale_price');
+            $table->float('total_price');
+            $table->float('paid_amount');
+            $table->float('due_amount');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
