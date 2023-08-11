@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('product'), $imageName);
 
@@ -50,9 +50,9 @@ class ProductController extends Controller
         $product->discount_amount = $request->discount_amount;
         $product->sale_price = $request->sale_price;
         $product->image = $imageName;
-    
+
         $product->save();
-    
+
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
@@ -92,7 +92,7 @@ class ProductController extends Controller
         // Check if a new image is uploaded
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
-            if (public_path('product') . '/' . $product->image && file_exists(public_path('product') . '/' . $product->image)) {
+            if ($product->image && file_exists(public_path('product') . '/' . $product->image)) {
                 unlink(public_path('product') . '/' . $product->image);
             }
 

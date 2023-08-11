@@ -28,42 +28,58 @@
               <div class="card-body">
                 <form action="{{ route('purchases.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
-                  <div class="mb-3">
-                    <label class="form-label">Product</label>
-                      <select class="form-select" name="product_id" id="product_id">
-                        <option>--Select One--</option>
-                        @foreach ($active_products as $active_product)
-                            <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
-                        @endforeach
-                      </select>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Quantity</label>
-                    <input type="text" class="form-control quantity" name="quantity">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Discount Type</label>
-                    <select name="discount_type" class="form-select">
-                        <option>--Select One--</option>
-                        <option value="1">Percentage</option>
-                      <option value="2">Fixed</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Sale Price</label>
-                    <input type="text" class="form-control sale_price" name="sale_price">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Total Price</label>
-                    <input type="text" class="form-control total_price" name="total_price">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Paid Amount</label>
-                    <input type="text" class="form-control paid_amount" name="paid_amount">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Due Amount</label>
-                    <input type="text" class="form-control due_amount" name="due_amount">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Product</label>
+                          <select class="form-select" name="product_id" id="product_id">
+                            <option>--Select One--</option>
+                            @foreach ($active_products as $active_product)
+                                <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
+                            @endforeach
+                          </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="text" class="form-control quantity" name="quantity">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Discount Type</label>
+                        <select name="discount_type" class="form-select">
+                            <option>--Select One--</option>
+                            <option value="1">Percentage</option>
+                          <option value="2">Fixed</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Sale Price</label>
+                        <input type="text" class="form-control sale_price" name="sale_price">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Total Price</label>
+                        <input type="text" class="form-control total_price" name="total_price">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Paid Amount</label>
+                        <input type="text" class="form-control paid_amount" name="paid_amount">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Due Amount</label>
+                        <input type="text" class="form-control due_amount" name="due_amount">
+                      </div>
+                    </div>
                   </div>
                   <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Purchase</button>
                 </form>

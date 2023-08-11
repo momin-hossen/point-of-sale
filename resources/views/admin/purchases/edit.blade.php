@@ -36,9 +36,9 @@
                   <div class="mb-3">
                     <label class="form-label">Discount Type</label>
                     <select name="discount_type" class="form-select">
-                        <option>{{ $purchase_info->discount_type }}</option>
-                        <option value="1">Percentage</option>
-                      <option value="2">Fixed</option>
+                        <option value="1">-Select-</option>
+                        <option @selected($purchase_info->discount_type == 1) value="1">Percentage</option>
+                        <option @selected($purchase_info->discount_type == 2) value="2">Fixed</option>
                     </select>
                   </div>
                   <div class="mb-3">

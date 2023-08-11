@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->integer('category_id');
             $table->string('image');
-            $table->float('price');
+            $table->double('price');
             $table->integer('discount_type')->default(1);
-            $table->float('discount_amount');
-            $table->float('sale_price');
+            $table->double('discount_amount');
+            $table->double('sale_price');
             $table->timestamps();
         });
     }
