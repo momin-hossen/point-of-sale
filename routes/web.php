@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerModuleController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FrontendController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\UnitController;
+use App\Models\CustomerModule;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +58,6 @@ Route::resource('products', ProductController::class);
 
 // PurchaseController
 Route::resource('purchases', PurchaseController::class);
+
+// CustomerModuleController
+Route::resource('customer_modules', CustomerModuleController::class);

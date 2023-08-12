@@ -180,6 +180,12 @@
                 <div data-i18n="Analytics">Purchase</div>
               </a>
             </li>
+            <li class="menu-item  {{ Request::is('customer_modules*') ? 'active' : '' }}">
+                <a href="{{ route('customer_modules.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-package"></i>
+                  <div data-i18n="Analytics">Customer Module</div>
+                </a>
+              </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -300,7 +306,7 @@
           <!-- / Navbar -->
 
           @yield('dashboard_content')
-          
+
           <div class="content-backdrop fade"></div>
         </div>
         <!-- Content wrapper -->
@@ -333,4 +339,4 @@
   <script src="{{ asset('dashboard_asset') }}/assets/js/dashboards-analytics.js"></script>
   @stack('js')
 </body>
-</html>          
+</html>
