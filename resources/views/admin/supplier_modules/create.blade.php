@@ -59,15 +59,15 @@
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Total Price</label>
-                        <input type="text" class="form-control " name="total_bill">
-                    </div>
-                    <div class="col-sm-4 mb-3">
-                        <label class="form-label">Due Amount</label>
-                        <input type="text" class="form-control " name="due_amount">
+                        <input type="text" class="form-control total_bill" name="total_bill">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Paid Amount</label>
-                        <input type="text" class="form-control " name="paid_amount">
+                        <input type="text" class="form-control paid_amount" name="paid_amount">
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <label class="form-label">Due Amount</label>
+                        <input type="text" class="form-control due_amount" name="due_amount">
                     </div>
                   <div class="col-sm-4">
                     <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Supplier Modules</button>
@@ -85,30 +85,22 @@
 
 
 
-{{-- @push('js')
+@push('js')
     <script>
-        $('#product_id').on('change', function() {
-            let sale_price = $('#product_id option:selected').data('sale_price');
-            $('.sale_price').val(sale_price);
-            calculateTotal();
-        });
+        // $('#product_id').on('change', function() {
+        //     let sale_price = $('#product_id option:selected').data('sale_price');
+        //     $('.sale_price').val(sale_price);
+        //     calculateTotal();
+        // });
 
-        $('.quantity').on('input', function() {
-            calculateTotal();
-        });
-
-        function calculateTotal() {
-            let sale_price = $('.sale_price').val();
-            let quantity = $('.quantity').val();
-            $('.total_price').val(sale_price * quantity);
-        }
         $('.paid_amount').on('input', function() {
-            calculate();
+            calculatePaid();
         });
-        function calculate() {
-            let total_price = $('.total_price').val();
+
+        function calculatePaid() {
+            let total_bill = $('.total_bill').val();
             let paid_amount = $('.paid_amount').val();
-            $('.due_amount').val(total_price - paid_amount);
+            $('.due_amount').val(total_bill - paid_amount);
         }
     </script>
-@endpush --}}
+@endpush

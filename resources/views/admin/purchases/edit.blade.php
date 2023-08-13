@@ -20,6 +20,15 @@
                 <form action="{{ route('purchases.update', $purchase->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+                    <div class="mb-3">
+                        <label class="form-label">Supplier</label>
+                          <select class="form-select" name="supplier_id" id="supplier_id">
+                            <option>--Select One--</option>
+                            @foreach ($active_suppliers as $active_supplier)
+                                <option {{ ($active_supplier->id == $purchase_info->supplier_id) ? "selected":"" }} value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
+                            @endforeach
+                          </select>
+                    </div>
                   <div class="mb-3">
                     <label class="form-label">Product</label>
                       <select class="form-select" name="product_id" id="product_id">

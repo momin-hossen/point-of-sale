@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-      
+
         <div class="col-12 m-auto mb-5">
           <div class="row justify-content-between">
             <div class="col mt-3">
@@ -36,6 +36,7 @@
                     <thead>
                       <tr>
                         <th>ID</th>
+                        <th>Supplier</th>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Discount Type</th>
@@ -50,6 +51,7 @@
                     @foreach ($purchases as $purchase)
                       <tr>
                         <td>{{ $purchase->id }}</td>
+                        <td>{{ $purchase->onetoonerelationwithsuppliermoduletable->name }}</td>
                         <td>{{ $purchase->onetoonerelationwithproducttable->name }}</td>
                         <td>{{ $purchase->quantity }}</td>
                         <td>{{ $purchase->discount_type }}</td>
@@ -71,7 +73,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>
                               </form>
-                              
+
                             </div>
                           </div>
                         </td>

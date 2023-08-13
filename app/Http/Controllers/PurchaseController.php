@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\SupplierModule;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -30,6 +31,7 @@ class PurchaseController extends Controller
         return view('admin.purchases.create', [
             'active_products' => Product::all(),
             'purchases' => Purchase::with('onetoonerelationwithproducttable')->get(),
+            'active_suppliers' => SupplierModule::all(),
         ]);
     }
 
@@ -38,8 +40,14 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
+        $supplier = SupplierModule::findOrFail($request->supplier_id);
+        $supplier->update([
+            'total_bill' => $supplier->total_bill + $request->total_bill,
+            'due_amount' => $supplier->due_amount + $request->due_amount,
+            'pay_amount' => $supplier->pay_amount + $request->pay_amount,
+        ]);
         Purchase::create($request->all());
-    
+
         return redirect()->route('purchases.index')
                          ->with('success', 'Purchase created successfully');
     }
@@ -59,8 +67,9 @@ class PurchaseController extends Controller
     {
         $active_products = Product::all();
         $purchase_info = $purchase;
+        $active_suppliers = SupplierModule::all();
 
-        return view('admin.purchases.edit', compact('purchase', 'active_products', 'purchase_info'));
+        return view('admin.purchases.edit', compact('purchase', 'active_products', 'purchase_info', 'active_suppliers'));
     }
 
     /**
