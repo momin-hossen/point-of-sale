@@ -15,6 +15,6 @@ class Purchase extends Model
         return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }
     public function onetoonerelationwithsuppliermoduletable(){
-        return $this->hasOne('App\Models\SupplierModule', 'id', 'supplier_id');
+        return $this->hasOne('App\Models\Supplier', 'id', 'supplier_id');
     }
 }

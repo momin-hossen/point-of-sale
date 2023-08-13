@@ -42,9 +42,9 @@ class PurchaseController extends Controller
     {
         $supplier = Supplier::findOrFail($request->supplier_id);
         $supplier->update([
-            'total_bill' => $supplier->total_bill + $request->total_bill,
+            'total_price' => $supplier->total_bill + $request->total_price,
             'due_amount' => $supplier->due_amount + $request->due_amount,
-            'pay_amount' => $supplier->pay_amount + $request->pay_amount,
+            'paid_amount' => $supplier->paid_amount + $request->paid_amount,
         ]);
         Purchase::create($request->all());
 
