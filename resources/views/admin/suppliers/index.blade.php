@@ -11,7 +11,7 @@
               <h3>Supplier List</h3>
             </div>
             <div class="col text-end align-item-center">
-              <a class="btn btn-primary btn-sm m-3" href="{{ url('supplier_modules/create') }}"><i class='menu-icon tf-icons bx bx-plus-circle'></i> Supplier Modules Create</a>
+              <a class="btn btn-primary btn-sm m-3" href="{{ url('suppliers/create') }}"><i class='menu-icon tf-icons bx bx-plus-circle'></i> Supplier Create</a>
             </div>
           </div>
             <!-- Basic Bootstrap Table -->
@@ -49,28 +49,28 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    @foreach ($supplier_modules as $supplier_module)
+                    @foreach ($suppliers as $supplier)
                       <tr>
-                        <td>{{ $supplier_module->id }}</td>
-                        <td>{{ $supplier_module->name }}</td>
-                        <td>{{ $supplier_module->phone }}</td>
-                        <td>{{ $supplier_module->email }}</td>
-                        <td>{{ $supplier_module->status }}</td>
-                        <td>{{ $supplier_module->address }}</td>
-                        <td>{{ $supplier_module->password }}</td>
-                        <td>{{ $supplier_module->total_bill }}</td>
-                        <td>{{ $supplier_module->paid_amount }}</td>
-                        <td>{{ $supplier_module->due_amount }}</td>
+                        <td>{{ $supplier->id }}</td>
+                        <td>{{ $supplier->name }}</td>
+                        <td>{{ $supplier->phone }}</td>
+                        <td>{{ $supplier->email }}</td>
+                        <td>{{ $supplier->status }}</td>
+                        <td>{{ $supplier->address }}</td>
+                        <td>{{ $supplier->password }}</td>
+                        <td>{{ $supplier->total_bill }}</td>
+                        <td>{{ $supplier->paid_amount }}</td>
+                        <td>{{ $supplier->due_amount }}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="{{ route('supplier_modules.edit', $supplier_module->id) }}"
+                              <a class="dropdown-item" href="{{ route('suppliers.edit', $supplier->id) }}"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a
                               >
-                              <form action="{{ route('supplier_modules.destroy', $supplier_module->id) }}" method="POST">
+                              <form action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>

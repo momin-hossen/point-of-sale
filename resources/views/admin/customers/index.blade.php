@@ -8,10 +8,10 @@
         <div class="col-12 m-auto mb-5">
           <div class="row justify-content-between">
             <div class="col mt-3">
-              <h3>Purchase List</h3>
+              <h3>Customer List</h3>
             </div>
             <div class="col text-end align-item-center">
-              <a class="btn btn-primary btn-sm m-3" href="{{ url('customer_modules/create') }}"><i class='menu-icon tf-icons bx bx-plus-circle'></i> Customer Modules Create</a>
+              <a class="btn btn-primary btn-sm m-3" href="{{ url('customers/create') }}"><i class='menu-icon tf-icons bx bx-plus-circle'></i> Customer Create</a>
             </div>
           </div>
             <!-- Basic Bootstrap Table -->
@@ -19,7 +19,7 @@
               <div class="card-body">
                 <div class="row justify-content-between">
                   <div class="col-sm-6">
-                      <h5>Purchase List</h5>
+                      <h5>Customer List</h5>
                   </div>
                   <div class="col-md-4 text-end">
                       <form action="" method="get">
@@ -49,28 +49,28 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    @foreach ($customer_modules as $customer_module)
+                    @foreach ($customers as $customer)
                       <tr>
-                        <td>{{ $customer_module->id }}</td>
-                        <td>{{ $customer_module->name }}</td>
-                        <td>{{ $customer_module->phone }}</td>
-                        <td>{{ $customer_module->email }}</td>
-                        <td>{{ $customer_module->status }}</td>
-                        <td>{{ $customer_module->address }}</td>
-                        <td>{{ $customer_module->password }}</td>
-                        <td>{{ $customer_module->total_bill }}</td>
-                        <td>{{ $customer_module->paid_amount }}</td>
-                        <td>{{ $customer_module->due_amount }}</td>
+                        <td>{{ $customer->id }}</td>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->phone }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->status }}</td>
+                        <td>{{ $customer->address }}</td>
+                        <td>{{ $customer->password }}</td>
+                        <td>{{ $customer->total_bill }}</td>
+                        <td>{{ $customer->paid_amount }}</td>
+                        <td>{{ $customer->due_amount }}</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="{{ route('customer_modules.edit', $customer_module->id) }}"
+                              <a class="dropdown-item" href="{{ route('customers.edit', $customer->id) }}"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a
                               >
-                              <form action="{{ route('customer_modules.destroy', $customer_module->id) }}" method="POST">
+                              <form action="{{ route('customers.destroy', $customer->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>

@@ -180,18 +180,18 @@
                 <div data-i18n="Analytics">Purchase</div>
               </a>
             </li>
-            {{-- Customer Module --}}
-            <li class="menu-item  {{ Request::is('customer_modules*') ? 'active' : '' }}">
-                <a href="{{ route('customer_modules.index') }}" class="menu-link">
+            {{-- Customer --}}
+            <li class="menu-item  {{ Request::is('customers*') ? 'active' : '' }}">
+                <a href="{{ route('customers.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-package"></i>
-                  <div data-i18n="Analytics">Customer Module</div>
+                  <div data-i18n="Analytics">Customer</div>
                 </a>
               </li>
-              {{-- Supplier Module --}}
-              <li class="menu-item  {{ Request::is('supplier_modules*') ? 'active' : '' }}">
-                <a href="{{ route('supplier_modules.index') }}" class="menu-link">
+              {{-- Supplier --}}
+              <li class="menu-item  {{ Request::is('suppliers*') ? 'active' : '' }}">
+                <a href="{{ route('suppliers.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-package"></i>
-                  <div data-i18n="Analytics">Supplier Module</div>
+                  <div data-i18n="Analytics">Supplier</div>
                 </a>
               </li>
           </ul>

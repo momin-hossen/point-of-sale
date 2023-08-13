@@ -15,18 +15,18 @@
         <div class="col-12 m-auto">
           <div class="row justify-content-between">
             <div class="col mt-3">
-              <h3>Supplier Modules Create</h3>
+              <h3>Supplier Create</h3>
             </div>
             <div class="col text-end align-item-center">
-              <a class="btn btn-primary btn-sm m-3" href="{{ url('supplier_modules') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Supplier Modules View</a>
+              <a class="btn btn-primary btn-sm m-3" href="{{ url('suppliers') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Supplier View</a>
             </div>
           </div>
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Supplier Modules Create</h5>
+                <h5 class="mb-0">Supplier Create</h5>
               </div>
               <div class="card-body">
-                <form action="{{ route('supplier_modules.store') }}" method="POST">
+                <form action="{{ route('suppliers.store') }}" method="POST">
                   @csrf
                   <div class="row">
                     <div class="col-sm-4 mb-3">
@@ -70,7 +70,7 @@
                         <input type="text" class="form-control due_amount" name="due_amount">
                     </div>
                   <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Supplier Modules</button>
+                    <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Supplier</button>
                   </div>
                 </form>
               </div>
