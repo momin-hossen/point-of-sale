@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SupplierModuleController;
 use App\Http\Controllers\UnitController;
 use App\Models\CustomerModule;
 use Illuminate\Support\Facades\Route;
@@ -61,3 +62,6 @@ Route::resource('purchases', PurchaseController::class);
 
 // CustomerModuleController
 Route::resource('customer_modules', CustomerModuleController::class);
+
+// SupplierModuleController
+Route::resource('supplier_modules', SupplierModuleController::class);
