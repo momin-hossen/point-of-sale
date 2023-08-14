@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SupplierController extends Controller
 {
@@ -33,7 +34,21 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        Supplier::create($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:suppliers,email',
+            'phone' => 'required|string|max:20',
+            'status' => 'required',
+            'address' => 'required|string|max:500',
+            'password' => 'required|min:8',
+            'total_bill' => 'required|numeric|min:0',
+            'due_amount' => 'required|numeric|min:0',
+            'paid_amount' => 'required|numeric|min:0',
+        ]);
+
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        Supplier::create($data);
 
         return redirect()->route('suppliers.index')
                          ->with('success', 'Supplier created successfully');

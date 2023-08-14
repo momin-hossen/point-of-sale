@@ -45,8 +45,8 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option>--Select One--</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
+                            <option value="1">Active</option>
+                            <option value="2">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3">
@@ -59,15 +59,15 @@
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Total Bill</label>
-                        <input type="text" class="form-control quantity" name="total_bill">
+                        <input type="number" class="form-control quantity" name="total_bill">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Due Amount</label>
-                        <input type="text" class="form-control quantity" name="due_amount">
+                        <input type="number" class="form-control quantity" name="due_amount">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Paid Amount</label>
-                        <input type="text" class="form-control quantity" name="paid_amount">
+                        <input type="number" class="form-control quantity" name="paid_amount">
                     </div>
                   <div class="col-sm-4">
                     <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Customer</button>

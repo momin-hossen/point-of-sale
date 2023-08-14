@@ -54,7 +54,7 @@
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label">Quantity</label>
-                        <input type="text" class="form-control quantity" name="quantity">
+                        <input type="number" class="form-control quantity" name="quantity">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -70,25 +70,25 @@
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label">Sale Price</label>
-                        <input type="text" class="form-control sale_price" name="sale_price">
+                        <input type="number" class="form-control sale_price" name="sale_price">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label">Total Bill</label>
-                        <input type="text" class="form-control total_bill" name="total_bill">
+                        <input type="number" class="form-control total_bill" name="total_bill">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label">Paid Amount</label>
-                        <input type="text" class="form-control paid_amount" name="paid_amount">
+                        <input type="number" class="form-control paid_amount" name="paid_amount">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label">Due Amount</label>
-                        <input type="text" class="form-control due_amount" name="due_amount">
+                        <input type="number" class="form-control due_amount" name="due_amount">
                       </div>
                     </div>
                   </div>

@@ -53,6 +53,18 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('dashboard_asset') }}/assets/js/config.js"></script>
+    <style>
+        #category_img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        #product_img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    </style>
   </head>
 
   <body>

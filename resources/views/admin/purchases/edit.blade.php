@@ -40,7 +40,7 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Quantity</label>
-                    <input type="text" class="form-control quantity" name="quantity" value="{{ $purchase_info->quantity }}">
+                    <input type="number" class="form-control quantity" name="quantity" value="{{ $purchase_info->quantity }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Discount Type</label>
@@ -52,19 +52,19 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Sale Price</label>
-                    <input type="text" class="form-control sale_price" name="sale_price" value="{{ $purchase_info->sale_price }}">
+                    <input type="number" class="form-control sale_price" name="sale_price" value="{{ $purchase_info->sale_price }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Total Bill</label>
-                    <input type="text" class="form-control total_bill" name="total_bill" value="{{ $purchase_info->total_bill }}">
+                    <input type="number" class="form-control total_bill" name="total_bill" value="{{ $purchase_info->total_bill }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Paid Amount</label>
-                    <input type="text" class="form-control paid_amount" name="paid_amount" value="{{ $purchase_info->paid_amount }}">
+                    <input type="number" class="form-control paid_amount" name="paid_amount" value="{{ $purchase_info->paid_amount }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Due Amount</label>
-                    <input type="text" class="form-control due_amount" name="due_amount" value="{{ $purchase_info->due_amount }}">
+                    <input type="number" class="form-control due_amount" name="due_amount" value="{{ $purchase_info->due_amount }}">
                   </div>
                   <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Update</button>
                 </form>

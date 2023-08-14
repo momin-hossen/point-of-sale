@@ -49,7 +49,7 @@
                         <td>{{ $category->description }}</td>
                         <td>{{ $category->status }}</td>
                         <td>
-                            <img src="{{ asset('category/'.$category->image) }}" alt="{{ $category->name }}" width="100">
+                            <img id="category_img" src="{{ asset('category/'.$category->image) }}" alt="{{ $category->name }}" width="100">
                         </td>
                         <td>
                           <div class="dropdown">
@@ -76,4 +76,4 @@
         </div>
     </div>
 </div>
-@endsection   
+@endsection

@@ -46,29 +46,29 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option>--Select One--</option>
-                            <option @selected($customer->status == 1) value="1">One</option>
-                            <option @selected($customer->status == 2) value="2">Two</option>
+                            <option @selected($customer->status == 1) value="1">Active</option>
+                            <option @selected($customer->status == 2) value="2">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Address</label>
-                        <input type="text" class="form-control quantity" name="address" value="{{ $customer->address }}">
+                        <input type="text" class="form-control" name="address" value="{{ $customer->address }}">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control quantity" name="password" value="{{ $customer->password }}">
+                        <input type="password" class="form-control" name="password" value="{{ $customer->password }}">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Total Bill</label>
-                        <input type="text" class="form-control quantity" name="total_bill" value="{{ $customer->total_bill }}">
+                        <input type="number" class="form-control" name="total_bill" value="{{ $customer->total_bill }}">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Due Amount</label>
-                        <input type="text" class="form-control quantity" name="due_amount" value="{{ $customer->due_amount }}">
+                        <input type="number" class="form-control " name="due_amount" value="{{ $customer->due_amount }}">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Paid Amount</label>
-                        <input type="text" class="form-control quantity" name="paid_amount" value="{{ $customer->paid_amount }}">
+                        <input type="number" class="form-control" name="paid_amount" value="{{ $customer->paid_amount }}">
                     </div>
                   <div class="col-sm-4">
                     <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Customer</button>

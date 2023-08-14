@@ -44,7 +44,7 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" value="{{ $product_info->price }}" name="price">
+                    <input type="number" class="form-control" value="{{ $product_info->price }}" name="price">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Discount Type</label>
@@ -56,11 +56,11 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Discount Amount</label>
-                    <input type="text" class="form-control" name="discount_amount" value="{{ $product_info->discount_amount }}">
+                    <input type="number" class="form-control" name="discount_amount" value="{{ $product_info->discount_amount }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Sale Price</label>
-                    <input type="text" class="form-control" name="sale_price" value="{{ $product_info->sale_price }}">
+                    <input type="number" class="form-control" name="sale_price" value="{{ $product_info->sale_price }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Image:</label>

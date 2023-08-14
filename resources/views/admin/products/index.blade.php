@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-      
+
         <div class="col-12 m-auto mb-5">
           <div class="row justify-content-between">
             <div class="col mt-3">
@@ -56,7 +56,7 @@
                         <td>{{ $product->discount_type }}</td>
                         <td>{{ $product->discount_amount }}</td>
                         <td>{{ $product->sale_price }}</td>
-                        <td><img src="{{ asset('product/'.$product->image) }}" alt="{{ $product->name }}" width="100"></td>
+                        <td><img id="product_img" src="{{ asset('product/'.$product->image) }}" alt="{{ $product->name }}" width="100"></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -71,7 +71,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>
                               </form>
-                              
+
                             </div>
                           </div>
                         </td>

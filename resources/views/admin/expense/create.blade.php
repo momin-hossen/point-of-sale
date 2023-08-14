@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Amount</label>
-                      <input type="text" class="form-control" name="amount">
+                      <input type="number" class="form-control" name="amount">
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Description</label>

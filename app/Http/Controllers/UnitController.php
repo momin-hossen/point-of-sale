@@ -12,7 +12,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        
+
         $units = Unit::when(request('search'), function($q) {
             $q->where('name', 'like', '%'.request('search').'%');
         })
@@ -33,14 +33,14 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'status' => 'required',
             'description' => 'required',
         ]);
-    
+
         Unit::create($request->all());
-    
+
         return redirect()->route('units.index')
                          ->with('success', 'Unit created successfully');
     }
@@ -65,6 +65,12 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required',
+            'description' => 'required',
+        ]);
+        
         $unit->update($request->all());
         return redirect()->route('units.index')->with('success', 'Unit updated successfully.');
     }
@@ -77,5 +83,5 @@ class UnitController extends Controller
         $unit->delete();
         return redirect()->route('units.index')->with('success', 'Unit deleted successfully.');
     }
-    
+
 }
