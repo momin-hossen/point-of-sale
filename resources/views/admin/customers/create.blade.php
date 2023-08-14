@@ -58,7 +58,7 @@
                         <input type="password" class="form-control quantity" name="password">
                     </div>
                     <div class="col-sm-4 mb-3">
-                        <label class="form-label">Total Price</label>
+                        <label class="form-label">Total Bill</label>
                         <input type="text" class="form-control quantity" name="total_bill">
                     </div>
                     <div class="col-sm-4 mb-3">

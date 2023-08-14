@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('discount_type')->default(1);
             $table->float('sale_price');
-            $table->float('total_price');
+            $table->float('total_bill');
             $table->float('paid_amount');
             $table->float('due_amount');
             $table->timestamps();

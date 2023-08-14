@@ -55,8 +55,8 @@
                     <input type="text" class="form-control sale_price" name="sale_price" value="{{ $purchase_info->sale_price }}">
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Total Price</label>
-                    <input type="text" class="form-control total_price" name="total_price" value="{{ $purchase_info->total_price }}">
+                    <label class="form-label">Total Bill</label>
+                    <input type="text" class="form-control total_bill" name="total_bill" value="{{ $purchase_info->total_bill }}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Paid Amount</label>
@@ -91,15 +91,15 @@
         function calculateTotal() {
             let sale_price = $('.sale_price').val();
             let quantity = $('.quantity').val();
-            $('.total_price').val(sale_price * quantity);
+            $('.total_bill').val(sale_price * quantity);
         }
         $('.paid_amount').on('input', function() {
             calculate();
         });
         function calculate() {
-            let total_price = $('.total_price').val();
+            let total_bill = $('.total_bill').val();
             let paid_amount = $('.paid_amount').val();
-            $('.due_amount').val(total_price - paid_amount);
+            $('.due_amount').val(total_bill - paid_amount);
         }
     </script>
 @endpush --}}

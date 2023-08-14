@@ -42,7 +42,7 @@
                         <th>Status</th>
                         <th>Address</th>
                         <th>Password</th>
-                        <th>Total Price</th>
+                        <th>Total Bill</th>
                         <th>Paid Amount</th>
                         <th>Due Amount</th>
                         <th>Actions</th>

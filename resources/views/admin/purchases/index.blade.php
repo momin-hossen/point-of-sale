@@ -41,7 +41,7 @@
                         <th>Quantity</th>
                         <th>Discount Type</th>
                         <th>Sale Price</th>
-                        <th>Total Price</th>
+                        <th>Total Bill</th>
                         <th>Paid Amount</th>
                         <th>Due Amount</th>
                         <th>Actions</th>
@@ -56,7 +56,7 @@
                         <td>{{ $purchase->quantity }}</td>
                         <td>{{ $purchase->discount_type }}</td>
                         <td>{{ $purchase->sale_price }}</td>
-                        <td>{{ $purchase->total_price }}</td>
+                        <td>{{ $purchase->total_bill }}</td>
                         <td>{{ $purchase->paid_amount }}</td>
                         <td>{{ $purchase->due_amount }}</td>
                         <td>
