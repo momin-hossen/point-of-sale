@@ -40,19 +40,28 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'description' => 'required',
+        //     'amount' => 'required|numeric',
+        //     'expense_date' => 'required|date',
+        //     'user_id' => 'required|exists:users,id', // Make sure to replace 'users' with the actual user table name
+        //     'expense_category_id' => 'required|exists:expense_categories,id', // Replace 'expense_categories' with your actual category table name
+        // ]);
+
+        // Expense::create($request->all());
         $validatedData = $request->validate([
             'expense_date' => 'required',
             'amount' => 'required',
             'description' => 'required',
         ]);
-        Expense::create([
+        $validatedData = Expense::create([
             'expense_date' => $request->expense_date,
             'amount' => $request->amount,
             'description' => $request->description,
             'user_id' => Auth::id(),
             'expense_category_id' => $request->expense_category_id,
         ]);
-    
+
         return redirect()->route('expenses.index')
                          ->with('success', 'Unit created successfully');
     }
@@ -90,7 +99,7 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')
                          ->with('success', ' created successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

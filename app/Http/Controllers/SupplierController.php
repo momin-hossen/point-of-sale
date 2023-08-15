@@ -50,6 +50,7 @@ class SupplierController extends Controller
         $data['password'] = Hash::make($data['password']);
         Supplier::create($data);
 
+
         return redirect()->route('suppliers.index')
                          ->with('success', 'Supplier created successfully');
     }
@@ -75,7 +76,28 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        $supplier->update($request->all());
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'status' => 'required',
+            'address' => 'required|string|max:500',
+            'password' => 'required|min:8',
+            'total_bill' => 'required|numeric',
+            'due_amount' => 'required|numeric',
+            'paid_amount' => 'required|numeric',
+        ]);
+
+
+        $data = $request->except('password'); // Exclude password field initially
+
+        // Update the password if provided
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+
+        $supplier->update($data);
         return redirect()->route('suppliers.index')->with('success', 'Supplier updated successfully.');
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -33,6 +34,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:suppliers,email',
+            'phone' => 'required|string|max:20',
+            'status' => 'required',
+            'address' => 'required|string|max:500',
+            'password' => 'required|min:8',
+            'total_bill' => 'required|numeric|min:0',
+            'due_amount' => 'required|numeric|min:0',
+            'paid_amount' => 'required|numeric|min:0',
+        ]);
+
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+
         Customer::create($request->all());
 
         return redirect()->route('customers.index')
@@ -60,7 +76,28 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        $customer->update($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'status' => 'required',
+            'address' => 'required|string|max:500',
+            'password' => 'required|min:8',
+            'total_bill' => 'required|numeric',
+            'due_amount' => 'required|numeric',
+            'paid_amount' => 'required|numeric',
+        ]);
+
+
+        $data = $request->except('password'); // Exclude password field initially
+
+        // Update the password if provided
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+
+        $customer->update($data);
+        // $customer->update($request->all());
         return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
     }
 

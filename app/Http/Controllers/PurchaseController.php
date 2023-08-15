@@ -40,13 +40,28 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'supplier_id' => 'required|integer|exists:suppliers,id',
+            'quantity' => 'required|integer|min:1',
+            'discount_type' => 'required',
+            'sale_price' => 'required|numeric|min:0',
+            'total_bill' => 'required|numeric|min:0',
+            'paid_amount' => 'required|numeric|min:0',
+            'due_amount' => 'required|numeric|min:0',
+        ]);
+
+
         $supplier = Supplier::findOrFail($request->supplier_id);
         $supplier->update([
             'total_bill' => $supplier->total_bill + $request->total_bill,
             'due_amount' => $supplier->due_amount + $request->due_amount,
             'paid_amount' => $supplier->paid_amount + $request->paid_amount,
         ]);
-        Purchase::create($request->all());
+
+
+        // Purchase::create($request->all());
+        Purchase::create($validatedData);
 
         return redirect()->route('purchases.index')
                          ->with('success', 'Purchase created successfully');
@@ -77,7 +92,20 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, Purchase $purchase)
     {
-        $purchase->update($request->all());
+
+        $validatedData = $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'supplier_id' => 'required|integer|exists:suppliers,id',
+            'quantity' => 'required|integer|min:1',
+            'discount_type' => 'required',
+            'sale_price' => 'required|numeric',
+            'total_bill' => 'required|numeric',
+            'paid_amount' => 'required|numeric',
+            'due_amount' => 'required|numeric',
+        ]);
+
+        $purchase->update($validatedData);
+        // $purchase->update($request->all());
         return redirect()->route('purchases.index')->with('success', 'Purchases updated successfully.');
     }
 

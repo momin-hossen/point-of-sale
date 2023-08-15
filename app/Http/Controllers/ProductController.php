@@ -38,6 +38,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id', // Assuming you have a categories table
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
+            'price' => 'required|numeric|min:0',
+            'discount_type' => 'required',
+            'discount_amount' => 'required_if:discount_type,amount|numeric|min:0',
+            'sale_price' => 'required|numeric|min:0',
+        ]);
 
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('product'), $imageName);
@@ -79,6 +88,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id', // Assuming you have a categories table
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
+            'price' => 'required|numeric|min:0',
+            'discount_type' => 'required',
+            'discount_amount' => 'required_if:discount_type,amount|numeric|min:0',
+            'sale_price' => 'required|numeric|min:0',
+        ]);
+
+
         $product = Product::findOrFail($id);
 
         // Update product data
