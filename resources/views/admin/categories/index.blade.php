@@ -3,6 +3,7 @@
 @section('dashboard_content')
 <div class="container-fluid">
     <div class="row">
+
         <div class="col-12 m-auto mb-5">
           <div class="row justify-content-between">
             <div class="col mt-3">
@@ -27,6 +28,11 @@
                               </div>
                         </form>
                     </div>
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                   </div>
                 </div>
                 <div class="table-responsive text-nowrap">

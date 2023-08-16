@@ -33,6 +33,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
+            'status' => 'required',
+            'description' => 'required',
+        ]);
 
         // upload image
         $imageName = time().'.'.$request->image->extension();
@@ -70,6 +76,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
+            'status' => 'required',
+            'description' => 'required',
+        ]);
+
         $category = Category::findOrFail($id);
 
         // Update category data

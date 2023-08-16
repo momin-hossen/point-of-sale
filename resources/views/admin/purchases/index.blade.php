@@ -29,6 +29,11 @@
                             </div>
                       </form>
                   </div>
+                  @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                  @endif
                 </div>
               </div>
                 <div class="table-responsive text-nowrap">
@@ -73,7 +78,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>
                               </form>
-                              
+
                             </div>
                           </div>
                         </td>
