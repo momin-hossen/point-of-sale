@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierModuleController;
 use App\Http\Controllers\UnitController;
@@ -67,3 +68,6 @@ Route::resource('customers', CustomerController::class);
 
 // SupplierController
 Route::resource('suppliers', SupplierController::class);
+
+// SaleController
+Route::resource('sales', SaleController::class);

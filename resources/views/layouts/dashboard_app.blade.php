@@ -206,6 +206,12 @@
                   <div data-i18n="Analytics">Supplier</div>
                 </a>
               </li>
+              <li class="menu-item  {{ Request::is('sales*') ? 'active' : '' }}">
+                <a href="{{ route('sales.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-package"></i>
+                  <div data-i18n="Analytics">Sale</div>
+                </a>
+              </li>
           </ul>
         </aside>
         <!-- / Menu -->
