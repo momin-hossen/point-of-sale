@@ -46,8 +46,8 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option>--Select One--</option>
-                            <option @selected($supplier->status == 1) value="1">Active</option>
-                            <option @selected($supplier->status == 2) value="2">Inactive</option>
+                            <option @selected($supplier->status == 'active') value="active">Active</option>
+                            <option @selected($supplier->status == 'inactive') value="inactive">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3">

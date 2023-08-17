@@ -55,8 +55,8 @@
                     <label class="form-label">Discount Type</label>
                     <select name="discount_type" class="form-select">
                         <option value="1">-Select-</option>
-                        <option @selected($sale_info->discount_type == 1) value="1">Percentage</option>
-                        <option @selected($sale_info->discount_type == 2) value="2">Fixed</option>
+                        <option @selected($sale_info->discount_type == 'percentage') value="percentage">Percentage</option>
+                        <option @selected($sale_info->discount_type == 'fixed') value="fixed">Fixed</option>
                     </select>
                   </div>
                   <div class="mb-3">

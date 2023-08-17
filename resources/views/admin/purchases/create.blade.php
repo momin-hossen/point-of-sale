@@ -62,8 +62,8 @@
                         <label class="form-label">Discount Type</label>
                         <select name="discount_type" class="form-select">
                             <option>--Select One--</option>
-                            <option value="1">Percentage</option>
-                          <option value="2">Fixed</option>
+                            <option value="percentage">Percentage</option>
+                          <option value="fixed">Fixed</option>
                         </select>
                       </div>
                     </div>

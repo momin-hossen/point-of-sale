@@ -35,7 +35,7 @@ class UnitController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'status' => 'required',
+            'status' => 'required|in:active,inactive',
             'description' => 'required',
         ]);
 
@@ -67,10 +67,10 @@ class UnitController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'status' => 'required',
+            'status' => 'required|in:active,inactive',
             'description' => 'required',
         ]);
-        
+
         $unit->update($request->all());
         return redirect()->route('units.index')->with('success', 'Unit updated successfully.');
     }

@@ -130,7 +130,7 @@
                   <x-text-input id="email" class="form-control" type="email" placeholder="Enter your email or username" name="email" :value="old('email')" required autofocus autocomplete="username" />
                   <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-              
+
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
@@ -166,7 +166,7 @@
 
               <p class="text-center mt-2">
                 <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
+                <a href="{{ url('register') }}">
                   <span>Create an account</span>
                 </a>
               </p>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->string('image');
             $table->double('price');
-            $table->integer('discount_type')->default(1);
+            $table->enum('discount_type', ['percentage', 'fixed']);
             $table->double('discount_amount');
             $table->double('sale_price');
             $table->timestamps();

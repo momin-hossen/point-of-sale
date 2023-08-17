@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->integer('status');
+            $table->enum('status', ['active', 'inactive']);
             $table->text('address');
             $table->text('password');
             $table->double('total_bill');

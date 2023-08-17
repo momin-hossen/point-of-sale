@@ -15,7 +15,7 @@
         <div class="col-12 m-auto">
           <div class="row justify-content-between">
             <div class="col mt-3">
-              <h3>Customer Create</h3>
+              <h3>Customer Edit</h3>
             </div>
             <div class="col text-end align-item-center">
               <a class="btn btn-primary btn-sm m-3" href="{{ url('customers') }}"><i class='menu-icon tf-icons bx bx-list-ul' ></i>Customer View</a>
@@ -23,7 +23,7 @@
           </div>
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Customer Create</h5>
+                <h5 class="mb-0">Customer Edit</h5>
               </div>
               <div class="card-body">
                 <form action="{{ route('customers.update', $customer->id) }}" method="POST">
@@ -46,8 +46,8 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option>--Select One--</option>
-                            <option @selected($customer->status == 1) value="1">Active</option>
-                            <option @selected($customer->status == 2) value="2">Inactive</option>
+                            <option @selected($customer->status == 'active') value="active">Active</option>
+                            <option @selected($customer->status == 'inactive') value="inactive">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3">

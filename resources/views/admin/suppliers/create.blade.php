@@ -45,8 +45,8 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option>--Select One--</option>
-                            <option value="1">Active</option>
-                            <option value="2">Inactive</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3">

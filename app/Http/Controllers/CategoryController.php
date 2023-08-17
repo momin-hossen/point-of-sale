@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
-            'status' => 'required',
+            'status' => 'required|in:active,inactive',
             'description' => 'required',
         ]);
 
@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB file size
-            'status' => 'required',
+            'status' => 'required|in:active,inactive',
             'description' => 'required',
         ]);
 

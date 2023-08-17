@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('customer_id');
             $table->integer('product_id');
             $table->integer('quantity');
-            $table->integer('discount_type')->default(1);
+            $table->enum('discount_type', ['percentage', 'fixed']);
             $table->float('sale_price');
             $table->float('total_bill');
             $table->float('paid_amount');
