@@ -31,15 +31,15 @@
                   <div class="row">
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control quantity" name="name">
+                        <input type="text" class="form-control " name="name">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Phone</label>
-                        <input type="text" class="form-control quantity" name="phone">
+                        <input type="text" class="form-control " name="phone">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control quantity" name="email">
+                        <input type="email" class="form-control " name="email">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Status</label>
@@ -51,23 +51,23 @@
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Address</label>
-                        <input type="text" class="form-control quantity" name="address">
+                        <input type="text" class="form-control " name="address">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control quantity" name="password">
+                        <input type="password" class="form-control " name="password">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Total Bill</label>
-                        <input type="number" class="form-control quantity" name="total_bill">
-                    </div>
-                    <div class="col-sm-4 mb-3">
-                        <label class="form-label">Due Amount</label>
-                        <input type="number" class="form-control quantity" name="due_amount">
+                        <input type="number" class="form-control total_bill" name="total_bill">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label">Paid Amount</label>
-                        <input type="number" class="form-control quantity" name="paid_amount">
+                        <input type="number" class="form-control paid_amount" name="paid_amount">
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <label class="form-label">Due Amount</label>
+                        <input type="number" class="form-control due_amount" name="due_amount">
                     </div>
                   <div class="col-sm-4">
                     <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Customer</button>
@@ -80,3 +80,16 @@
 </div>
 
 @endsection
+@push('js')
+    <script>
+        $('.paid_amount').on('input', function() {
+            calculatePaid();
+        });
+
+        function calculatePaid() {
+            let total_bill = $('.total_bill').val();
+            let paid_amount = $('.paid_amount').val();
+            $('.due_amount').val(total_bill - paid_amount);
+        }
+    </script>
+@endpush

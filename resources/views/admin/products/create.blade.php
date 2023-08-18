@@ -44,7 +44,7 @@
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Price</label>
-                      <input type="number" class="form-control" name="price">
+                      <input type="number" class="form-control price" name="price">
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Discount Type</label>
@@ -56,11 +56,11 @@
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Discount Amount</label>
-                      <input type="number" class="form-control" name="discount_amount">
+                      <input type="number" class="form-control discount_amount" name="discount_amount">
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Sale Price</label>
-                      <input type="number" class="form-control" name="sale_price">
+                      <input type="number" class="form-control sale_price" name="sale_price">
                     </div>
                     <div class="mb-3 col-sm-6">
                       <label class="form-label">Image:</label>
@@ -76,3 +76,16 @@
 </div>
 
 @endsection
+
+@push('js')
+    <script>
+        $('.discount_amount').on('input', function() {
+            calculate();
+        });
+        function calculate() {
+            let price = $('.price').val();
+            let discount_amount = $('.discount_amount').val();
+            $('.sale_price').val(price - discount_amount);
+        }
+    </script>
+@endpush
