@@ -29,7 +29,61 @@
                 <form action="{{ route('purchases.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
-                    <div class="col-sm-6">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th><strong>Sr. No.</strong></th>
+                            <th><strong>Supplier</strong></th>
+                            <th><strong>Product</strong></th>
+                            <th><strong>Quantity</strong></th>
+                            <th><strong>Discount Type</strong></th>
+                            <th><strong>Sale Price</strong></th>
+                            <th><strong>Total Bill</strong></th>
+                            <th><strong>Paid Amount</strong></th>
+                            <th><strong>Due Amount</strong></th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><select class="form-select" name="supplier_id" id="supplier_id">
+                                <option>--Select One--</option>
+                                @foreach ($active_suppliers as $active_supplier)
+                                    <option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
+                                @endforeach
+                              </select>
+                            </td>
+                            <td>
+                                <select class="form-select" name="product_id" id="product_id">
+                                    <option>--Select One--</option>
+                                    @foreach ($active_products as $active_product)
+                                        <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control quantity" name="quantity">
+                            </td>
+                            <td>
+                                <select name="discount_type" class="form-select">
+                                    <option>--Select One--</option>
+                                    <option value="percentage">Percentage</option>
+                                  <option value="fixed">Fixed</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control sale_price" name="sale_price">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control total_bill" name="total_bill">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control paid_amount" name="paid_amount">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control due_amount" name="due_amount">
+                            </td>
+                        </tr>
+
+                    </table>
+                    {{-- <div class="col-sm-6">
                         <div class="mb-3">
                           <label class="form-label">Supplier</label>
                             <select class="form-select" name="supplier_id" id="supplier_id">
@@ -90,9 +144,9 @@
                         <label class="form-label">Due Amount</label>
                         <input type="number" class="form-control due_amount" name="due_amount">
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
-                  <button type="submit" class="btn btn-primary"><i class='menu-icon tf-icons bx bx-save' ></i> Purchase</button>
+                  <button type="submit" class="btn btn-primary"><i class=' menu-icon tf-icons bx bx-save' ></i> Purchase</button>
                 </form>
               </div>
             </div>
