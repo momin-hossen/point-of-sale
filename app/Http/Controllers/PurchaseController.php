@@ -40,28 +40,41 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'product_id' => 'required|integer|exists:products,id',
-            'supplier_id' => 'required|integer|exists:suppliers,id',
-            'quantity' => 'required|integer|min:1',
-            'discount_type' => 'required',
-            'sale_price' => 'required|numeric|min:0',
-            'total_bill' => 'required|numeric|min:0',
-            'paid_amount' => 'required|numeric|min:0',
-            'due_amount' => 'required|numeric|min:0',
-        ]);
+        // $validatedData = $request->validate([
+        //     'product_id' => 'required|integer|exists:products,id',
+        //     'supplier_id' => 'required|integer|exists:suppliers,id',
+        //     'quantity' => 'required|integer|min:1',
+        //     'discount_type' => 'required',
+        //     'sale_price' => 'required|numeric|min:0',
+        //     'total_bill' => 'required|numeric|min:0',
+        //     'paid_amount' => 'required|numeric|min:0',
+        //     'due_amount' => 'required|numeric|min:0',
+        // ]);
 
 
         $supplier = Supplier::findOrFail($request->supplier_id);
-        $supplier->update([
-            'total_bill' => $supplier->total_bill + $request->total_bill,
-            'due_amount' => $supplier->due_amount + $request->due_amount,
-            'paid_amount' => $supplier->paid_amount + $request->paid_amount,
-        ]);
+        foreach($request->supplier_id as $key => $supplier_id) {
+            $supplier->update([
+                'total_bill' => $supplier->total_bill + $request->total_bill[$key],
+                'due_amount' => $supplier->due_amount + $request->due_amount[$key],
+                'paid_amount' => $supplier->paid_amount + $request->paid_amount[$key],
+            ]);
+        }
 
+        foreach($request->product_id as $key => $product_id) {
+            Purchase::create([
+                'product_id' => $product_id,
+                'supplier_id' => $request->supplier_id[$key],
+                'quantity' => $request->quantity[$key],
+                'discount_type' => $request->discount_type[$key],
+                'sale_price' => $request->sale_price[$key],
+                'total_bill' => $request->total_bill[$key],
+                'paid_amount' => $request->paid_amount[$key],
+                'due_amount' => $request->due_amount[$key],
+            ]);
+        }
 
-        // Purchase::create($request->all());
-        Purchase::create($validatedData);
+        // Purchase::create($validatedData);
 
         return redirect()->route('purchases.index')
                          ->with('success', 'Purchase created successfully');

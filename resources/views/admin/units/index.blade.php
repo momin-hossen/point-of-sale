@@ -80,5 +80,31 @@
                 <!--/ Basic Bootstrap Table -->
             </div>
         </div>
+        <div class="row">
+            <?php
+            $products = ['banana', 'apple', 'lemon', 'apricot', 'pineapple'];
+            $prices = [10, 20, 30, 40, 50];
+            $quantities = [1, 3, 4, 2, 3];
+            ?>
+
+            <div class="col-5 bg-light text-center">
+                <table class="table">
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <?php foreach ($products as $key => $product) { ?>
+                        <tr>
+                            <td><?php echo $key + 1;?></td>
+                            <td><?php echo $product;?></td>
+                            <td><?php echo $prices[$key];?></td>
+                            <td><?php echo $quantities[$key];?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection

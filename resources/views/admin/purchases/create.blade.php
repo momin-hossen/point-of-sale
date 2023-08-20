@@ -24,7 +24,8 @@
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Product Create</h5>
-              </div>
+                <button class="btn btn-success add-button">+ Add</button>
+            </div>
               <div class="card-body">
                 <form action="{{ route('purchases.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
@@ -40,10 +41,11 @@
                             <th><strong>Total Bill</strong></th>
                             <th><strong>Paid Amount</strong></th>
                             <th><strong>Due Amount</strong></th>
+                            <th><strong>Action</strong></th>
                         </tr>
-                        <tr>
+                        <tr class="ta-row">
                             <td>1</td>
-                            <td><select class="form-select" name="supplier_id" id="supplier_id">
+                            <td><select class="form-select" name="supplier_id[]" id="supplier_id">
                                 <option>--Select One--</option>
                                 @foreach ($active_suppliers as $active_supplier)
                                     <option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
@@ -51,7 +53,7 @@
                               </select>
                             </td>
                             <td>
-                                <select class="form-select" name="product_id" id="product_id">
+                                <select class="form-select" name="product_id[]" id="product_id">
                                     <option>--Select One--</option>
                                     @foreach ($active_products as $active_product)
                                         <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
@@ -59,92 +61,30 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity" name="quantity">
+                                <input type="number" class="form-control quantity" name="quantity[]">
                             </td>
                             <td>
-                                <select name="discount_type" class="form-select">
+                                <select name="discount_type[]" class="form-select">
                                     <option>--Select One--</option>
                                     <option value="percentage">Percentage</option>
                                   <option value="fixed">Fixed</option>
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control sale_price" name="sale_price">
+                                <input type="number" class="form-control sale_price" name="sale_price[]">
                             </td>
                             <td>
-                                <input type="number" class="form-control total_bill" name="total_bill">
+                                <input type="number" class="form-control total_bill" name="total_bill[]">
                             </td>
                             <td>
-                                <input type="number" class="form-control paid_amount" name="paid_amount">
+                                <input type="number" class="form-control paid_amount" name="paid_amount[]">
                             </td>
                             <td>
-                                <input type="number" class="form-control due_amount" name="due_amount">
+                                <input type="number" class="form-control due_amount" name="due_amount[]">
                             </td>
+                            <td><button class="btn btn-danger close-item">x</button></td>
                         </tr>
-
                     </table>
-                    {{-- <div class="col-sm-6">
-                        <div class="mb-3">
-                          <label class="form-label">Supplier</label>
-                            <select class="form-select" name="supplier_id" id="supplier_id">
-                              <option>--Select One--</option>
-                              @foreach ($active_suppliers as $active_supplier)
-                                  <option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
-                              @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Product</label>
-                          <select class="form-select" name="product_id" id="product_id">
-                            <option>--Select One--</option>
-                            @foreach ($active_products as $active_product)
-                                <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
-                            @endforeach
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Quantity</label>
-                        <input type="number" class="form-control quantity" name="quantity">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Discount Type</label>
-                        <select name="discount_type" class="form-select">
-                            <option>--Select One--</option>
-                            <option value="percentage">Percentage</option>
-                          <option value="fixed">Fixed</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Sale Price</label>
-                        <input type="number" class="form-control sale_price" name="sale_price">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Total Bill</label>
-                        <input type="number" class="form-control total_bill" name="total_bill">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Paid Amount</label>
-                        <input type="number" class="form-control paid_amount" name="paid_amount">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-3">
-                        <label class="form-label">Due Amount</label>
-                        <input type="number" class="form-control due_amount" name="due_amount">
-                      </div>
-                    </div> --}}
                   </div>
                   <button type="submit" class="btn btn-primary"><i class=' menu-icon tf-icons bx bx-save' ></i> Purchase</button>
                 </form>
@@ -181,5 +121,15 @@
             let paid_amount = $('.paid_amount').val();
             $('.due_amount').val(total_bill - paid_amount);
         }
+
+
+        $('.add-button').on('click', function() {
+            var total_input = $('.ta-row').length +1;
+            $('table').append('<tr class="ta-row"><td>'+(total_input)+'</td><td><select class="form-select" name="supplier_id[]" id="supplier_id"><option>--Select One--</option>@foreach ($active_suppliers as $active_supplier)<option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>@endforeach</select></td><td><select class="form-select" name="product_id[]" id="product_id"><option>--Select One--</option>@foreach ($active_products as $active_product)<option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>@endforeach</select></td><td><input type="number" class="form-control quantity" name="quantity[]"></td><td><select name="discount_type[]" class="form-select"><option>--Select One--</option><option value="percentage">Percentage</option><option value="fixed">Fixed</option></select></td><td><input type="number" class="form-control sale_price" name="sale_price[]"></td><td><input type="number" class="form-control total_bill" name="total_bill[]"></td><td><input type="number" class="form-control paid_amount" name="paid_amount[]"></td><td><input type="number" class="form-control due_amount" name="due_amount[]"></td><td><button class="btn btn-danger close-item">x</button></td></tr>');
+        })
+
+        $(document).on('click', '.close-item', function() {
+            $(this).closest('.ta-row').remove();
+        })
     </script>
 @endpush
