@@ -46,7 +46,6 @@
                         <th>Email</th>
                         <th>Status</th>
                         <th>Address</th>
-                        <th>Password</th>
                         <th>Total Bill</th>
                         <th>Paid Amount</th>
                         <th>Due Amount</th>
@@ -62,7 +61,6 @@
                         <td>{{ $supplier->email }}</td>
                         <td>{{ $supplier->status }}</td>
                         <td>{{ $supplier->address }}</td>
-                        <td>{{ $supplier->password }}</td>
                         <td>{{ $supplier->total_bill }}</td>
                         <td>{{ $supplier->paid_amount }}</td>
                         <td>{{ $supplier->due_amount }}</td>

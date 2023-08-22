@@ -46,7 +46,6 @@
                         <th>Email</th>
                         <th>Status</th>
                         <th>Address</th>
-                        <th>Password</th>
                         <th>Total Bill</th>
                         <th>Paid Amount</th>
                         <th>Due Amount</th>
@@ -62,7 +61,6 @@
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->status }}</td>
                         <td>{{ $customer->address }}</td>
-                        <td>{{ $customer->password }}</td>
                         <td>{{ $customer->total_bill }}</td>
                         <td>{{ $customer->paid_amount }}</td>
                         <td>{{ $customer->due_amount }}</td>
