@@ -51,19 +51,19 @@ class PurchaseController extends Controller
         //     'due_amount' => 'required|numeric|min:0',
         // ]);
 
+        // foreach($request->supplier_id as $key => $supplier_id) {
+        //     $supplier = Supplier::findOrFail($supplier_id);
+        //     $supplier->update([
+        //         'total_bill' => $supplier->total_bill + $request->total_bill[$key],
+        //         'due_amount' => $supplier->due_amount + $request->due_amount[$key],
+        //         'paid_amount' => $supplier->paid_amount + $request->paid_amount[$key],
+        //     ]);
+        // }
 
-        $supplier = Supplier::findOrFail($request->supplier_id);
-        foreach($request->supplier_id as $key => $supplier_id) {
-            $supplier->update([
-                'total_bill' => $supplier->total_bill + $request->total_bill[$key],
-                'due_amount' => $supplier->due_amount + $request->due_amount[$key],
-                'paid_amount' => $supplier->paid_amount + $request->paid_amount[$key],
-            ]);
-        }
 
         foreach($request->product_id as $key => $product_id) {
+
             Purchase::create([
-                
                 'product_id' => $product_id,
                 'supplier_id' => $request->supplier_id[$key],
                 'quantity' => $request->quantity[$key],
@@ -72,6 +72,13 @@ class PurchaseController extends Controller
                 'total_bill' => $request->total_bill[$key],
                 'paid_amount' => $request->paid_amount[$key],
                 'due_amount' => $request->due_amount[$key],
+            ]);
+
+            $supplier = Supplier::findOrFail($request->supplier_id[$key]);
+            $supplier->update([
+                'total_bill' => $supplier->total_bill + $request->total_bill[$key],
+                'due_amount' => $supplier->due_amount + $request->due_amount[$key],
+                'paid_amount' => $supplier->paid_amount + $request->paid_amount[$key],
             ]);
         }
 

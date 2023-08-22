@@ -40,26 +40,47 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'product_id' => 'required|integer|exists:products,id',
-            'customer_id' => 'required|integer|exists:customers,id',
-            'quantity' => 'required|integer|min:1',
-            'discount_type' => 'required',
-            'sale_price' => 'required|numeric|min:0',
-            'total_bill' => 'required|numeric|min:0',
-            'paid_amount' => 'required|numeric|min:0',
-            'due_amount' => 'required|numeric|min:0',
-        ]);
+        // $validatedData = $request->validate([
+        //     'product_id' => 'required|integer|exists:products,id',
+        //     'customer_id' => 'required|integer|exists:customers,id',
+        //     'quantity' => 'required|integer|min:1',
+        //     'discount_type' => 'required',
+        //     'sale_price' => 'required|numeric|min:0',
+        //     'total_bill' => 'required|numeric|min:0',
+        //     'paid_amount' => 'required|numeric|min:0',
+        //     'due_amount' => 'required|numeric|min:0',
+        // ]);
+        foreach($request->product_id as $key => $product_id) {
 
 
-        $customer = Customer::findOrFail($request->customer_id);
-        $customer->update([
-            'total_bill' => $customer->total_bill + $request->total_bill,
-            'due_amount' => $customer->due_amount + $request->due_amount,
-            'paid_amount' => $customer->paid_amount + $request->paid_amount,
-        ]);
+            Sale::create([
+                'product_id' => $product_id,
+                'customer_id' => $request->customer_id[$key],
+                'quantity' => $request->quantity[$key],
+                'discount_type' => $request->discount_type[$key],
+                'sale_price' => $request->sale_price[$key],
+                'total_bill' => $request->total_bill[$key],
+                'paid_amount' => $request->paid_amount[$key],
+                'due_amount' => $request->due_amount[$key],
+            ]);
 
-        Sale::create($validatedData);
+            $customer = Customer::findOrFail($request->customer_id[$key]);
+            $customer->update([
+                'total_bill' => $customer->total_bill + $request->total_bill[$key],
+                'due_amount' => $customer->due_amount + $request->due_amount[$key],
+                'paid_amount' => $customer->paid_amount + $request->paid_amount[$key],
+            ]);
+        }
+
+
+        // $customer = Customer::findOrFail($request->customer_id);
+        // $customer->update([
+        //     'total_bill' => $customer->total_bill + $request->total_bill,
+        //     'due_amount' => $customer->due_amount + $request->due_amount,
+        //     'paid_amount' => $customer->paid_amount + $request->paid_amount,
+        // ]);
+
+        // Sale::create($validatedData);
 
         return redirect()->route('sales.index')
                          ->with('success', 'Sale created successfully');
