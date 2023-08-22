@@ -63,6 +63,7 @@ class PurchaseController extends Controller
 
         foreach($request->product_id as $key => $product_id) {
             Purchase::create([
+                
                 'product_id' => $product_id,
                 'supplier_id' => $request->supplier_id[$key],
                 'quantity' => $request->quantity[$key],
