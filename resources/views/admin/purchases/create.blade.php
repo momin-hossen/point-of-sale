@@ -31,59 +31,63 @@
                   @csrf
                   <div class="row">
                     <table class="table table-bordered">
-                        <tr>
-                            <th><strong>Sr. No.</strong></th>
-                            <th><strong>Supplier</strong></th>
-                            <th><strong>Product</strong></th>
-                            <th><strong>Quantity</strong></th>
-                            <th><strong>Discount Type</strong></th>
-                            <th><strong>Sale Price</strong></th>
-                            <th><strong>Total Bill</strong></th>
-                            <th><strong>Paid Amount</strong></th>
-                            <th><strong>Due Amount</strong></th>
-                            <th><strong>Action</strong></th>
-                        </tr>
-                        <tr class="ta-row">
-                            <td>1</td>
-                            <td><select class="form-select" name="supplier_id[]" id="supplier_id">
-                                <option>--Select One--</option>
-                                @foreach ($active_suppliers as $active_supplier)
-                                    <option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
-                                @endforeach
-                              </select>
-                            </td>
-                            <td>
-                                <select class="form-select" name="product_id[]" id="product_id">
+                        <thead>
+                            <tr>
+                                <th><strong>Sr. No.</strong></th>
+                                <th><strong>Supplier</strong></th>
+                                <th><strong>Product</strong></th>
+                                <th><strong>Quantity</strong></th>
+                                <th><strong>Discount Type</strong></th>
+                                <th><strong>Sale Price</strong></th>
+                                <th><strong>Total Bill</strong></th>
+                                <th><strong>Paid Amount</strong></th>
+                                <th><strong>Due Amount</strong></th>
+                                <th><strong>Action</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="ta-row total-row">
+                                <td>1</td>
+                                <td><select class="form-select" name="supplier_id[]" id="supplier_id">
                                     <option>--Select One--</option>
-                                    @foreach ($active_products as $active_product)
-                                        <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
+                                    @foreach ($active_suppliers as $active_supplier)
+                                        <option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>
                                     @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" class="form-control quantity" name="quantity[]">
-                            </td>
-                            <td>
-                                <select name="discount_type[]" class="form-select">
-                                    <option>--Select One--</option>
-                                    <option value="percentage">Percentage</option>
-                                  <option value="fixed">Fixed</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" class="form-control sale_price" name="sale_price[]">
-                            </td>
-                            <td>
-                                <input type="number" class="form-control total_bill" name="total_bill[]">
-                            </td>
-                            <td>
-                                <input type="number" class="form-control paid_amount" name="paid_amount[]">
-                            </td>
-                            <td>
-                                <input type="number" class="form-control due_amount" name="due_amount[]">
-                            </td>
-                            <td><button class="btn btn-danger close-item">x</button></td>
-                        </tr>
+                                  </select>
+                                </td>
+                                <td>
+                                    <select class="form-select row-1" name="product_id[]" id="product_id">
+                                        <option>--Select One--</option>
+                                        @foreach ($active_products as $active_product)
+                                            <option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control quantity" name="quantity[]">
+                                </td>
+                                <td>
+                                    <select name="discount_type[]" class="form-select">
+                                        <option>--Select One--</option>
+                                        <option value="percentage">Percentage</option>
+                                      <option value="fixed">Fixed</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control sale_price" name="sale_price[]">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control total_bill" name="total_bill[]">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control paid_amount" name="paid_amount[]">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control due_amount" name="due_amount[]">
+                                </td>
+                                <td><button class="btn btn-danger close-item">x</button></td>
+                            </tr>
+                        </tbody>
                     </table>
                   </div>
                   <button type="submit" class="btn btn-primary"><i class=' menu-icon tf-icons bx bx-save' ></i> Purchase</button>
@@ -98,9 +102,11 @@
 
 @push('js')
     <script>
-        $('#product_id').on('change', function() {
+        $(document).on('change','#product_id', function() {
             let sale_price = $('#product_id option:selected').data('sale_price');
+            console.log(sale_price);
             $('.sale_price').val(sale_price);
+            $(this).val();
             calculateTotal();
         });
 
@@ -123,9 +129,10 @@
         }
 
 
-        $('.add-button').on('click', function() {
-            var total_input = $('.ta-row').length +1;
-            $('table').append('<tr class="ta-row"><td>'+(total_input)+'</td><td><select class="form-select" name="supplier_id[]" id="supplier_id"><option>--Select One--</option>@foreach ($active_suppliers as $active_supplier)<option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>@endforeach</select></td><td><select class="form-select" name="product_id[]" id="product_id"><option>--Select One--</option>@foreach ($active_products as $active_product)<option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>@endforeach</select></td><td><input type="number" class="form-control quantity" name="quantity[]"></td><td><select name="discount_type[]" class="form-select"><option>--Select One--</option><option value="percentage">Percentage</option><option value="fixed">Fixed</option></select></td><td><input type="number" class="form-control sale_price" name="sale_price[]"></td><td><input type="number" class="form-control total_bill" name="total_bill[]"></td><td><input type="number" class="form-control paid_amount" name="paid_amount[]"></td><td><input type="number" class="form-control due_amount" name="due_amount[]"></td><td><button class="btn btn-danger close-item">x</button></td></tr>');
+        $(document).on('click', '.add-button', function() {
+            const original_input = $('tbody').length;
+            console.log(original_input);
+            $('table tbody').append('<tr class="ta-row total-row"><td>'+(0)+'</td><td><select class="form-select" name="supplier_id[]" id="supplier_id"><option>--Select One--</option>@foreach ($active_suppliers as $active_supplier)<option value="{{ $active_supplier->id }}">{{ $active_supplier->name }}</option>@endforeach</select></td><td><select class="form-select row-'+(0)+'" name="product_id[]" id="product_id"><option>--Select One--</option>@foreach ($active_products as $active_product)<option data-sale_price="{{ $active_product->sale_price }}" value="{{ $active_product->id }}">{{ $active_product->name }}</option>@endforeach</select></td><td><input type="number" class="form-control quantity" name="quantity[]"></td><td><select name="discount_type[]" class="form-select"><option>--Select One--</option><option value="percentage">Percentage</option><option value="fixed">Fixed</option></select></td><td><input type="number" class="form-control sale_price" name="sale_price[]"></td><td><input type="number" class="form-control total_bill" name="total_bill[]"></td><td><input type="number" class="form-control paid_amount" name="paid_amount[]"></td><td><input type="number" class="form-control due_amount" name="due_amount[]"></td><td><button class="btn btn-danger close-item">x</button></td></tr>@push("js")<script>$("#product_id").on("change", function() {let sale_price = $("#product_id option:selected").data("sale_price");$(".sale_price").val(sale_price);calculateTotal();});$(".quantity").on("input", function() {calculateTotal();});function calculateTotal() {let sale_price = $(".sale_price").val();let quantity = $(".quantity").val();$(".total_bill").val(sale_price * quantity);}$(".paid_amount").on("input", function() {calculate();});function calculate() {let total_bill = $(".total_bill").val();let paid_amount = $(".paid_amount").val();$(".due_amount").val(total_bill - paid_amount);}</script>@endpush');
         })
 
         $(document).on('click', '.close-item', function() {
@@ -133,3 +140,4 @@
         })
     </script>
 @endpush
+
